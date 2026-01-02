@@ -43,17 +43,6 @@ app.use('/api/dashboard', dashboardRoutes);
 
 const path = require('path');
 
-// ... (Your API routes like app.use('/api/users') go here) ...
-
-// 1. Serve the static build files from React
-// Note: Vite uses 'dist', Create-React-App uses 'build'. Check your client folder!
-app.use(express.static(path.join(__dirname, '../client/dist')));
-
-// 2. Handle React Routing (Redirect any unknown route to index.html)
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
-});
-
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
