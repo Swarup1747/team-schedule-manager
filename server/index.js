@@ -41,8 +41,6 @@ app.use('/api/manager', manager);
 
 app.use('/api/dashboard', dashboardRoutes);
 
-const path = require('path');
-
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
