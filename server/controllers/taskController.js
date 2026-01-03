@@ -87,4 +87,20 @@ const updateTaskStatus = async (req, res) => {
     }
 };
 
-module.exports = { createTask, getUserTasks, updateTaskStatus };
+const getAllTasks = async (req, res) => {
+    try {
+        // Fetch all tasks and sort by newest
+        // Populate 'assignedTo' so we can see who the task belongs to
+        const tasks = await Task.find()
+            .populate('assignedTo', 'firstName lastName') 
+            .sort({ createdAt: -1 });
+
+        res.status(200).json(tasks);
+    } catch (error) {
+        console.error("Error fetching all tasks:", error);
+        res.status(500).json({ message: 'Server Error' });
+    }
+};
+
+// Don't forget to export it!
+module.exports = { createTask, getUserTasks, updateTaskStatus, getAllTasks };
