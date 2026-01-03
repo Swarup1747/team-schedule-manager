@@ -21,14 +21,14 @@ const Projects = () => {
 
   const fetchUserRole = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/users/${user.id}`);
+      const res = await axios.get(`https://team-schedule-manager-1.onrender.com/api/users/${user.id}`);
       setDbUser(res.data);
     } catch (error) { console.error(error); }
   };
 
   const fetchProjects = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/projects', {
+      const res = await axios.get('https://team-schedule-manager-1.onrender.com/api/projects', {
         params: { clerkId: user.id }
       });
       setProjects(res.data);
@@ -36,7 +36,7 @@ const Projects = () => {
   };
 
   const fetchAllUsers = async () => {
-    const res = await axios.get('http://localhost:5000/api/users');
+    const res = await axios.get('https://team-schedule-manager-1.onrender.com/api/users');
     setUsersList(res.data);
   };
 
@@ -51,7 +51,7 @@ const Projects = () => {
   const handleCreate = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/projects', {
+      await axios.post('https://team-schedule-manager-1.onrender.com/api/projects', {
         ...newProject,
         clerkId: user.id,
         teamMembers: selectedTeam
@@ -65,7 +65,7 @@ const Projects = () => {
   const handleComment = async (projectId) => {
     if (!commentText[projectId]) return;
     try {
-      await axios.post(`http://localhost:5000/api/projects/${projectId}/comments`, {
+      await axios.post(`https://team-schedule-manager-1.onrender.com/api/projects/${projectId}/comments`, {
         text: commentText[projectId],
         clerkId: user.id
       });
@@ -78,7 +78,7 @@ const Projects = () => {
 
   const handleToggleWork = async (projectId) => {
     try {
-      await axios.put(`http://localhost:5000/api/projects/${projectId}/work`, {
+      await axios.put(`https://team-schedule-manager-1.onrender.com/api/projects/${projectId}/work`, {
         clerkId: user.id
       });
       fetchProjects();

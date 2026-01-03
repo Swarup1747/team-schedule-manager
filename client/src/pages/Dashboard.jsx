@@ -16,7 +16,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (user) {
-      axios.get(`http://localhost:5000/api/users/${user.id}`)
+      axios.get(`https://team-schedule-manager-1.onrender.com/api/users/${user.id}`)
         .then(res => setDbUser(res.data))
         .catch(err => console.error("Error fetching user:", err));
     }
@@ -33,9 +33,9 @@ const Dashboard = () => {
       // --- LOGIC CHANGE 1: Pass 'clerkId' to API calls ---
       // This ensures the backend only returns data relevant to THIS user
       const [tasksRes, projectsRes, meetingsRes] = await Promise.all([
-        axios.get(`http://localhost:5000/api/tasks/${user.id}`), // Already has ID in URL
-        axios.get('http://localhost:5000/api/projects', { params: { clerkId: user.id } }), // ADDED PARAM
-        axios.get(`http://localhost:5000/api/meetings/${user.id}`)
+        axios.get(`https://team-schedule-manager-1.onrender.com/api/tasks/${user.id}`), // Already has ID in URL
+        axios.get('https://team-schedule-manager-1.onrender.com/api/projects', { params: { clerkId: user.id } }), // ADDED PARAM
+        axios.get(`https://team-schedule-manager-1.onrender.com/api/meetings/${user.id}`)
       ]);
 
       const allTasks = tasksRes.data;

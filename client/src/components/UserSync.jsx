@@ -9,7 +9,7 @@ const UserSync = () => {
     const syncUserToBackend = async () => {
       if (isSignedIn && user) {
         try {
-          await axios.post('http://localhost:5000/api/users/sync', {
+          await axios.post('https://team-schedule-manager-1.onrender.com/api/users/sync', {
             clerkId: user.id,
             email: user.primaryEmailAddress.emailAddress,
             firstName: user.firstName,

@@ -10,7 +10,7 @@ const Sidebar = () => {
   // Fetch the user's role from your database when the component loads
   useEffect(() => {
     if (user) {
-      axios.get(`http://localhost:5000/api/users/${user.id}`)
+      axios.get(`https://team-schedule-manager-1.onrender.com/api/users/${user.id}`)
         .then(res => setUserRole(res.data.role))
         .catch(err => console.error("Error fetching role for sidebar:", err));
     }

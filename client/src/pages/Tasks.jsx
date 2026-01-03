@@ -28,14 +28,14 @@ const Tasks = () => {
 
   const fetchUserRole = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/users/${user.id}`);
+      const res = await axios.get(`https://team-schedule-manager-1.onrender.com/api/users/${user.id}`);
       setDbUser(res.data);
     } catch (error) { console.error("Error fetching role:", error); }
   };
 
   const fetchAllUsers = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/users');
+      const res = await axios.get('https://team-schedule-manager-1.onrender.com/api/users');
       setUsersList(res.data);
     } catch (error) { console.error("Error fetching users", error); }
   };
@@ -44,9 +44,9 @@ const Tasks = () => {
     try {
       let endpoint = '';
       if (dbUser.role === 'Manager') {
-        endpoint = 'http://localhost:5000/api/tasks';
+        endpoint = 'https://team-schedule-manager-1.onrender.com/api/tasks';
       } else {
-        endpoint = `http://localhost:5000/api/tasks/${user.id}`;
+        endpoint = `https://team-schedule-manager-1.onrender.com/api/tasks/${user.id}`;
       }
 
       const res = await axios.get(endpoint);
@@ -57,7 +57,7 @@ const Tasks = () => {
   const handleCreate = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/tasks', {
+      await axios.post('https://team-schedule-manager-1.onrender.com/api/tasks', {
         ...newTask,
         clerkId: user.id
       });
@@ -71,7 +71,7 @@ const Tasks = () => {
 
   const updateStatus = async (id, newStatus) => {
     try {
-      await axios.put(`http://localhost:5000/api/tasks/${id}`, { status: newStatus });
+      await axios.put(`https://team-schedule-manager-1.onrender.com/api/tasks/${id}`, { status: newStatus });
       fetchTasks();
     } catch (error) { console.error("Error updating status:", error); }
   };

@@ -16,7 +16,7 @@ const EmployeeMonitoring = () => {
   // 1. First, check WHO is logged in
   useEffect(() => {
     if (user) {
-        axios.get(`http://localhost:5000/api/users/${user.id}`)
+        axios.get(`https://team-schedule-manager-1.onrender.com/api/users/${user.id}`)
             .then(res => {
                 setDbUser(res.data);
                 // Redirect if not manager
@@ -45,7 +45,7 @@ const EmployeeMonitoring = () => {
 
   const fetchEmployees = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/users');
+      const res = await axios.get('https://team-schedule-manager-1.onrender.com/api/users');
       setEmployees(res.data.filter(u => u.role !== 'Manager'));
     } catch (err) { console.error(err); }
   };
@@ -54,7 +54,7 @@ const EmployeeMonitoring = () => {
     setLoading(true);
     try {
       // Pass the manager's ID to pass backend security check
-      const res = await axios.get(`http://localhost:5000/api/manager/employee/${targetId}`, {
+      const res = await axios.get(`https://team-schedule-manager-1.onrender.com/api/manager/employee/${targetId}`, {
           params: { requesterId: user.id } 
       });
       setMonitorData(res.data);

@@ -26,21 +26,21 @@ const Meetings = () => {
 
     const fetchUserRole = async () => {
         try {
-            const res = await axios.get(`http://localhost:5000/api/users/${user.id}`);
+            const res = await axios.get(`https://team-schedule-manager-1.onrender.com/api/users/${user.id}`);
             setDbUser(res.data);
         } catch (error) { console.error(error); }
     };
 
     const fetchMeetings = async () => {
         try {
-            const res = await axios.get(`http://localhost:5000/api/meetings/${user.id}`);
+            const res = await axios.get(`https://team-schedule-manager-1.onrender.com/api/meetings/${user.id}`);
             setMeetings(res.data);
         } catch (error) { console.error(error); }
     };
 
     const fetchAllUsers = async () => {
         try {
-            const res = await axios.get('http://localhost:5000/api/users');
+            const res = await axios.get('https://team-schedule-manager-1.onrender.com/api/users');
             setUsersList(res.data);
         } catch (error) { console.error(error); }
     };
@@ -57,7 +57,7 @@ const Meetings = () => {
         e.preventDefault();
         setStatus('Creating meeting...');
         try {
-            await axios.post('http://localhost:5000/api/meetings', {
+            await axios.post('https://team-schedule-manager-1.onrender.com/api/meetings', {
                 ...formData,
                 clerkId: user.id,
                 attendees: selectedAttendees // Send selected IDs
